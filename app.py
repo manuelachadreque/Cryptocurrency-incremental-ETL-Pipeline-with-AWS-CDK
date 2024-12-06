@@ -2,27 +2,25 @@
 import os
 
 import aws_cdk as cdk
+from aws_cdk import Tags
 
-from cdk_incremental_load.cdk_incremental_load_stack import CdkIncrementalLoadStack
+from kinesis_stream.kinesis_stream_stack import KinesisStreamStack
+from data_consumer.data_consumer_stack import DataconsumerStack
+from data_producer.data_producer_stack import DataProducerStack
+from S3_bucket.s3_bucket_stack import S3BucketStack
 
+
+
+
+env_LONDON   =cdk.Environment(account="430118814763", region="eu-west-2")
 
 app = cdk.App()
-CdkIncrementalLoadStack(app, "CdkIncrementalLoadStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
 
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
+kinesis_stream = KinesisStreamStack(app, "KinesisStreamStack", env=env_LONDON)
+data_producer = DataProducerStack(app, "DataProducerStack", env=env_LONDON)
+data_consumer = DataconsumerStack(app, "DataConsumerStack", env=env_LONDON)
+s3_bucket = S3BucketStack(app, "S3BucketStack", env=env_LONDON)
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
-
+Tags.of(app).add("ProjectOwner", "Manuela-Chadreque")
+Tags.of(app).add("ProjectName", "Crypto_incremental_Pipeline")
 app.synth()

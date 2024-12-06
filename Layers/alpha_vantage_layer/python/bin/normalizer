@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/manu/Documents/01 PROJECTS/01 AWS/02_Build_Serverless_Pipeline_using_AWS_CDK_and_Lambda_in_Python/cdk_incremental_load/.venv/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from charset_normalizer.cli import cli_detect
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(cli_detect())

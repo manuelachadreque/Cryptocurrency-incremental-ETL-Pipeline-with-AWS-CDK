@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Layers/alpha_vantage_layer/python"
+    ]
+}
