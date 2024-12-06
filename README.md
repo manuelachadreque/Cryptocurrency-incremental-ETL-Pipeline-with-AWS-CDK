@@ -1,5 +1,25 @@
-# Welcome to your CDK Python project!
+# Cryptocurrency Incremental ETL Pipeline with AWS CDK
 
+The main goal of this project is to develop an incremental Extract, Transform, Load (ETL) solution
+utilizing AWS CDK to analyze cryptocurrency data. This will involve constructing a serverless pipeline in
+which lambda functions are utilized to retrieve data from an API and stream it into Kinesis streams.
+Additionally, we will create another lambda function to consume the data from the Kinesis stream, apply
+necessary transformations, and store it in DynamoDB.
+
+To perform data analytics on the incoming data within the Kinesis streams, we will leverage Apache Flink
+and Apache Zeppelin. These tools will enable us to extract insights and derive valuable information from
+the data. AWS serverless technologies, such as Amazon Lambda and Amazon Glue, will be employed to
+efficiently process and transform the data from the three different data sources.
+Furthermore, we will utilize Amazon Athena, a query service, to analyze the transformed data stored in
+DynamoDB. This will facilitate efficient querying and exploration of the data, enabling us to extract
+meaningful insights and make informed decisions based on the cryptocurrency data.
+By combining these AWS services and technologies, we aim to create a robust and scalable solution for
+analyzing cryptocurrency data, allowing for comprehensive data processing, transformation, and
+analytics.
+
+# Project Architecture
+
+![Project Architecture](./resources/git%20push%20-u%20origin%20main.drawio.svg)
 
 
 ## Project Setup
@@ -62,3 +82,5 @@ In order to install the Alpha Vantage Layer, do the following:
 $ mkdir -p layers/alpha_vantage_layer/python
 $ pip install -t layers/alpha_vantage_layer/python/ urllib3==1.26.16 alpha_vantage
 ```
+
+## Project Stack
